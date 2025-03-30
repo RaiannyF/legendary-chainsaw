@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pratica1a</string>
+    <string name="text1">Valor 1: </string>
+    <string name="text2">Valor 2: </string>
+    <string name="btn1">+</string>
+    <string name="btn2">-</string>
+    <string name="btn3">*</string>
+    <string name="btn4">/</string>
+    <string name="text3">O resultado é:  </string>
+</resources>
