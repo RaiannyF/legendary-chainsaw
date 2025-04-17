@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="30dp"
+    android:layout_centerHorizontal="true"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/txtReportTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtReportTitle"
+        android:layout_centerHorizontal="true"
+        android:textSize="16dp"
+        android:typeface="serif"
+        android:textStyle="italic"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtName"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/txtReportTitle" />
+
+    <TextView
+        android:id="@+id/txtNameResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtName"
+        android:layout_toEndOf="@+id/txtName"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:id="@+id/txtAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtAge"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtName" />
+
+    <TextView
+        android:id="@+id/txtAgeResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtAge"
+        android:layout_toEndOf="@+id/txtAge"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:id="@+id/txtWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtWeight"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtAge" />
+
+    <TextView
+        android:id="@+id/txtWeightResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtWeight"
+        android:layout_toEndOf="@+id/txtWeight"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:id="@+id/txtHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtHeight"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtWeight" />
+
+    <TextView
+        android:id="@+id/txtHeightResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtHeight"
+        android:layout_toEndOf="@+id/txtHeight"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:id="@+id/txtIMC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtIMC"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtHeight" />
+
+    <TextView
+        android:id="@+id/txtIMCResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtIMC"
+        android:layout_toEndOf="@+id/txtIMC"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:id="@+id/txtRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtRating"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtIMC" />
+
+    <TextView
+        android:id="@+id/txtRatingResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtRating"
+        android:layout_toEndOf="@+id/txtRating"
+        android:layout_marginStart="10dp" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnBack"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtRating"
+        android:layout_marginTop="70dp"
+        android:onClick="goBack" />
+
+</RelativeLayout>

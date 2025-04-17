@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">IMC Calculator</string>
+
+    <string name="txtName">Nome: </string>
+    <string name="txtAge">Idade: </string>
+    <string name="txtWeight">Peso (kg): </string>
+    <string name="txtHeight">Altura (m): </string>
+    <string name="btnReport">Relatório Nutricional</string>
+
+    <string name="txtReportTitle">Relatório Nutricional</string>
+    <string name="txtIMC">IMC: </string>
+    <string name="txtRating">Classificação: </string>
+    <string name="btnBack">Realizar novo Cálculo</string>
+</resources>
