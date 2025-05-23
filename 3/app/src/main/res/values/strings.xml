@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">3</string>
+    <string name="btnDPI">DPI/UFV</string>
+    <string name="btnPonteNova">Ponte Nova</string>
+    <string name="btnVicosa">Viçosa</string>
+    <string name="btnLocal">Localização</string>
+</resources>
