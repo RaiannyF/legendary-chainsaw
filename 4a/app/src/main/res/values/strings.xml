@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">4a</string>
+    <string name="light">Lanterna: </string>
+    <string name="vibration">Vibração: </string>
+    <string name="btnClassifyReadings">Classificar leituras</string>
+</resources>

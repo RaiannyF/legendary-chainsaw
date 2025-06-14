@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -46,9 +47,11 @@ import java.util.List;
 // Using onMapReadyCallBack to async map
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private final LatLng DPI = new LatLng(-20.76498763191783, -42.86820330793967);
-    private final LatLng VICOSA = new LatLng(-20.75341788007787, -42.87741937820796);
-    private final LatLng PONTENOVA = new LatLng(-20.407935319042718, -42.89542055880212);
+    // private LatLng DPI = new LatLng(-20.76498763191783, -42.86820330793967);
+    // private LatLng VICOSA = new LatLng(-20.75341788007787, -42.87741937820796);
+    // private LatLng PONTENOVA = new LatLng(-20.407935319042718, -42.89542055880212);
+
+    private LatLng LOCAL;
 
     private LatLng CURRENT_POSITION;
     private Marker currentMarker = null;
@@ -58,7 +61,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     FusedLocationProviderClient fusedLocationClient;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,45 +120,67 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         switch (local_option) {
             case 0:
                 // Ponte Nova
-                centerLocal(PONTENOVA, "Apt em Ponte Nova");
+                centerLocal("PONTENOVA");
                 break;
 
             case 1:
                 // Vicosa
-                centerLocal(VICOSA, "Apt em Vicosa");
+                centerLocal("VICOSA");
                 break;
 
             case 2:
                 // DPI
-                centerLocal(DPI, "DPI/UFV");
+                centerLocal("DPI");
                 break;
         }
     }
 
     public void onClickPonteNova(View v) {
-        centerLocal(PONTENOVA, "Apt em Ponte Nova");
+        centerLocal("PONTENOVA");
     }
 
     public void onClickVicosa(View v) {
-        centerLocal(VICOSA, "Apt em Vicosa");
+        centerLocal("VICOSA");
     }
 
     public void onClickDPI(View v) {
-        centerLocal(DPI, "DPI/UFV");
+        centerLocal("DPI");
     }
 
-    // Function to center a LOCAL and add a marker
-    private void centerLocal(LatLng LOCAL, String text) {
-        CameraUpdate c = CameraUpdateFactory.newCameraPosition(
+    private LatLng searchLocalInDatabase(String localDescription) {
+        Cursor c = BancoDadosSingleton.getInstance().buscar("Location", new String[]{"latitude", "longitude"}, "descricao = '" + localDescription + "'", "");
+
+        Log.i("BANCO", "tentou buscar o trem");
+        LatLng local = new LatLng(0,0);
+        if (c.getCount() > 0) {
+            while (c.moveToNext()) {
+                int latitudeIndex = c.getColumnIndex("latitude");
+                int longitudeIndex = c.getColumnIndex("longitude");
+
+                float latitude = c.getFloat(latitudeIndex);
+                float longitude = c.getFloat(longitudeIndex);
+                local = new LatLng(latitude, longitude);
+            }
+            c.close();
+        }
+
+        return local;
+    }
+
+    // Function to center a LOCAL and add a marker searching in database to coordinates
+    private void centerLocal(String localDescription) {
+        LOCAL = searchLocalInDatabase(localDescription);
+
+        CameraUpdate camera = CameraUpdateFactory.newCameraPosition(
                 new CameraPosition.Builder()
                         .target(LOCAL)
                         .zoom(17)
                         .build());
-        map.animateCamera(c);
+        map.animateCamera(camera);
 
         map.addMarker(new MarkerOptions()
                 .position(LOCAL)
-                .title(text));
+                .title(localDescription));
     }
 
     // Function to read current position each time button is clicked
@@ -176,6 +200,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public void onSuccess(Location location) {
                 if (location != null) {
                     CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
+
+                    LatLng VICOSA = searchLocalInDatabase("VICOSA");
 
                     // Calculate and show distance in meters of house and current position
                     DecimalFormat df = new DecimalFormat("#.00");

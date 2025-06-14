@@ -2,7 +2,9 @@ package android.pratica3;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
                     // Show toast of item clicked
                     Toast.makeText(getBaseContext(), "Posição: " + position + "\nTexto: " + text, Toast.LENGTH_SHORT).show();
+
+                    // Insert in Logs table
 
                     startActivity(it);
                 }
