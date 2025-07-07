@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">5</string>
+    <string name="txtLocalName">Nome do local:</string>
+    <string name="txtLocalCategory">Categoria do local:</string>
+    <string name="spnLocalCategory">Categoria do local:</string>
+    <string name="txtGlobalPosition">Posicionamento Global</string>
+    <string name="txtLatitude">Latitude:</string>
+    <string name="txtLongitude">Longitude:</string>
+    <string name="btnCheckin">CHECK-IN</string>
+    <string name="txtTitleManagement">Gestão de Check-in</string>
+    <string name="txtLocal">LOCAL:</string>
+    <string name="txtDelete">Excluir?</string>
+    <string name="txtTitleReport">Locais Mais Visitados</string>
+    <string name="txtVisits">VISITAS:</string>
+</resources>
